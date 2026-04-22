@@ -24,7 +24,7 @@ public class AddCommand implements Command {
     }
 
     public String getName() {
-        return "add {element}";
+        return "add";
     }
 
     @Override

@@ -17,11 +17,11 @@ public class RemoveByPersQualCommand implements Command {
     }
 
     public String getDescription() {
-        return "удалить из коллекции все элементы, значение поля personalQualitiesMaximum которого эквивалентно заданному";
+        return "удалить из коллекции все элементы, значение поля personalQualitiesMaximum которого эквивалентно заданному. Использование: remove_all_by_personal_qualities_maximum value";
     }
 
     public String getName() {
-        return "remove_all_by_personal_qualities_maximum personalQualitiesMaximum";
+        return "remove_all_by_personal_qualities_maximum";
     }
 
     @Override

@@ -32,10 +32,14 @@ public class LabWork implements Comparable<LabWork> {
      * @throws IllegalArgumentException при нарушении ограничений
      */
     public LabWork(Integer id, String name, Coordinates coordinates, ZonedDateTime creationDate, Float minimalPoint, long personalQualitiesMaximum, String description, Difficulty difficulty, Person author) {
-        setId(id);
+        if (id != null) {
+            setId(id);
+        }
         setName(name);
         setCoordinates(coordinates);
-        setCreationDate(creationDate);
+        if (creationDate != null) {
+            setCreationDate(creationDate);
+        }
         setMinimalPoint(minimalPoint);
         setPersonalQualitiesMaximum(personalQualitiesMaximum);
         setDescription(description);

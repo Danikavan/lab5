@@ -22,11 +22,11 @@ public class ExecuteScriptCommand implements Command {
     }
 
     public String getDescription() {
-        return "считать и исполнить скрипт из указанного файла";
+        return "считать и исполнить скрипт из указанного файла. Использование: execute_script file_name";
     }
 
     public String getName() {
-        return "execute_script file_name";
+        return "execute_script";
     }
 
     @Override

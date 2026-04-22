@@ -20,11 +20,11 @@ public class UpdateIdCommand implements Command {
     }
 
     public String getDescription() {
-        return "обновить значение элемента коллекции, id которого равен заданному";
+        return "обновить значение элемента коллекции, id которого равен заданному. Использование: update id";
     }
 
     public String getName() {
-        return "update id {element}";
+        return "update";
     }
 
     @Override

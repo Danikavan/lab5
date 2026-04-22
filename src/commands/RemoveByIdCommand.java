@@ -18,11 +18,11 @@ public class RemoveByIdCommand implements Command {
     }
 
     public String getDescription() {
-        return "удалить элемент из коллекции по его id";
+        return "удалить элемент из коллекции по его id. Использование: remove_by_id id";
     }
 
     public String getName() {
-        return "remove_by_id id";
+        return "remove_by_id";
     }
 
     @Override

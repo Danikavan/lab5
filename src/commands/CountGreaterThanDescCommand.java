@@ -17,11 +17,11 @@ public class CountGreaterThanDescCommand implements Command {
     }
 
     public String getDescription() {
-        return "вывести количество элементов, значение поля description которых больше заданного";
+        return "вывести количество элементов, значение поля description которых больше заданного. Использование: count_greater_than_description description";
     }
 
     public String getName() {
-        return "count_greater_than_description description";
+        return "count_greater_than_description";
     }
 
     @Override

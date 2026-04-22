@@ -152,18 +152,28 @@ public class FileManager {
      */
     private LabWork parseLabWork(String csv) {
         List<String> fields = parseCsvLine(csv);
+// Также для других строковых полей, если они есть (например, для location.name)
         if (fields.size() != 18) return null;
         try {
             Integer id = Integer.parseInt(fields.get(0));
             String name = fields.get(1);
+            if (name.startsWith("\"") && name.endsWith("\"")) {
+                name = name.substring(1, name.length() - 1);
+            }
             Float x = Float.parseFloat(fields.get(2));
             Double y = Double.parseDouble(fields.get(3));
             ZonedDateTime creationDate = ZonedDateTime.parse(fields.get(4));
             Float minimalPoint = fields.get(5).isEmpty() ? null : Float.parseFloat(fields.get(5));
             long personalMax = Long.parseLong(fields.get(6));
             String description = fields.get(7);
+            if (description.startsWith("\"") && description.endsWith("\"")) {
+                description = description.substring(1, description.length() - 1);
+            }
             Difficulty difficulty = fields.get(8).isEmpty() ? null : Difficulty.valueOf(fields.get(8));
             String authorName = fields.get(9);
+            if (authorName.startsWith("\"") && authorName.endsWith("\"")) {
+                authorName = authorName.substring(1, authorName.length() - 1);
+            }
             long weight = Long.parseLong(fields.get(10));
             EyeColor eyeColor = fields.get(11).isEmpty() ? null : EyeColor.valueOf(fields.get(11));
             HairColor hairColor = fields.get(12).isEmpty() ? null : HairColor.valueOf(fields.get(12));
@@ -172,6 +182,9 @@ public class FileManager {
             int locY = Integer.parseInt(fields.get(15));
             float locZ = Float.parseFloat(fields.get(16));
             String locName = fields.get(17).isEmpty() ? null : fields.get(17);
+            if (locName.startsWith("\"") && locName.endsWith("\"")) {
+                locName = locName.substring(1, locName.length() - 1);
+            }
 
             Coordinates coordinates = new Coordinates(x, y);
             Location location = new Location(locX, locY, locZ, locName);
@@ -198,11 +211,10 @@ public class FileManager {
             char c = line.charAt(i);
             if (c == '"') {
                 if (inQuotes && i + 1 < line.length() && line.charAt(i + 1) == '"') {
-                    // Две кавычки подряд внутри кавычек означают одну кавычку в данных
-                    field.append('"');
-                    i++; // пропускаем следующую кавычку
+                    field.append('"'); // экранированная кавычка
+                    i++;
                 } else {
-                    inQuotes = !inQuotes;
+                    inQuotes = !inQuotes; // переключаем состояние, кавычку не добавляем
                 }
             } else if (c == ',' && !inQuotes) {
                 result.add(field.toString());
@@ -211,7 +223,7 @@ public class FileManager {
                 field.append(c);
             }
         }
-        result.add(field.toString()); // добавляем последнее поле
+        result.add(field.toString());
         return result;
     }
 }

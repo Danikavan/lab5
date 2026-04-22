@@ -24,7 +24,7 @@ public class RemoveGreaterCommand implements Command {
     }
 
     public String getName() {
-        return "remove_greater {element}";
+        return "remove_greater";
     }
 
     @Override
